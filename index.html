@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PythonBot – GTA 5 Tool</title>
+    <meta name="description" content="Modern, comfortable triggerbot for GTA 5. No overlay, no FiveM, no injection. Simple, open source, with color picker and more. Download now!">
+    <meta property="og:title" content="PythonBot – GTA 5 Tool">
+    <meta property="og:description" content="Modern, comfortable triggerbot for GTA 5. No overlay, no FiveM, no injection. Simple, open source, with color picker and more. Download now!">
+    <meta property="og:image" content="https://i.imgur.com/1Q9Z1Zm.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="icon.png">
+    <link href="https://fonts.googleapis.com/css?family=Segoe+UI:400,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #181c23 0%, #232837 100%);
+            color: #e6eaf3;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 540px;
+            margin: 48px auto 24px auto;
+            background: #232837;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px #000a, 0 0 0 2px #00bfff, 0 0 24px #00bfff44;
+            padding: 0 0 24px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .neverlose-tabs {
+            display: flex;
+            background: #181c23;
+            border-bottom: 2.5px solid #00bfff;
+            border-radius: 18px 18px 0 0;
+            overflow: hidden;
+            box-shadow: 0 2px 12px #00bfff22;
+        }
+        .neverlose-tab {
+            flex: 1;
+            text-align: center;
+            padding: 18px 0 12px 0;
+            font-size: 1.25rem;
+            color: #7a8597;
+            background: none;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            transition: color 0.18s, background 0.18s;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .neverlose-tab.active {
+            color: #00bfff;
+            background: #232837;
+            box-shadow: 0 2px 0 #00bfff;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 0;
+            z-index: 1;
+            position: relative;
+            padding-top: 32px;
+        }
+        .header h1 {
+            font-size: 2.2rem;
+            color: #00bfff;
+            margin: 0 0 10px 0;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 12px #00bfff55, 0 1px 0 #222;
+        }
+        .header .subtitle {
+            color: #bfffe0;
+            font-size: 1.13rem;
+            margin-bottom: 4px;
+        }
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(90deg, #00bfff 0%, #00eaff 100%);
+            color: #181c23;
+            font-weight: bold;
+            font-size: 1.18rem;
+            border: none;
+            border-radius: 12px;
+            padding: 13px 36px;
+            margin: 12px 0 0 0;
+            box-shadow: 0 4px 24px #00bfff55;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, transform 0.15s;
+            text-decoration: none;
+        }
+        .download-btn:hover {
+            background: linear-gradient(90deg, #00eaff 0%, #00bfff 100%);
+            color: #232837;
+            transform: scale(1.04);
+        }
+        .section {
+            margin: 0 32px 22px 32px;
+            background: #181c23;
+            border-radius: 14px;
+            padding: 18px 20px 12px 20px;
+            box-shadow: 0 2px 12px #00bfff33;
+            animation: fadeInUp 1.7s;
+            backdrop-filter: blur(2px);
+        }
+        .section h2 {
+            color: #00bfff;
+            font-size: 1.13rem;
+            margin: 0 0 10px 0;
+            letter-spacing: 1px;
+        }
+        .section ul, .section ol {
+            color: #bfffe0;
+            font-size: 1.09rem;
+            line-height: 1.8;
+            margin: 0 0 10px 0;
+            padding-left: 22px;
+        }
+        .footer {
+            text-align: center;
+            color: #888;
+            font-size: 0.95rem;
+            margin-top: 18px;
+            z-index: 1;
+        }
+        .neverlose-icon {
+            font-size: 1.5rem;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        @media (max-width: 600px) {
+            .container { padding: 0; }
+            .section { margin: 0 4vw 18px 4vw; }
+        }
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.7); }
+            80% { opacity: 1; transform: scale(1.1); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="neverlose-tabs">
+            <button class="neverlose-tab active" style="font-size:1.5rem;" disabled>🎯</button>
+            <button class="neverlose-tab" style="font-size:1.5rem;" disabled>🖼️</button>
+            <button class="neverlose-tab" style="font-size:1.5rem;" disabled>ℹ️</button>
+        </div>
+        <div class="header">
+            <img src="icon.png" alt="PythonBot Logo" style="width:64px;height:64px;margin-bottom:8px;filter:drop-shadow(0 2px 8px #00bfffcc);animation:popIn 1.2s;">
+            <h1 style="animation:fadeIn 1.1s;">PythonBot <span style='font-size:1rem;color:#bbb;'>(v0.6)</span></h1>
+            <div class="subtitle" style="animation:fadeIn 1.2s;">Open Source triggerbot for GTA 5 – no FiveM, no injection</div>
+            <a class="download-btn pulse" href="https://github.com/ljas-vu/triggerbot-gui/releases/latest" target="_blank" style="animation:fadeInUp 1.3s;">⬇️ Download for Windows</a>
+            <div style="margin-top:8px;color:#00bfff;font-size:1.08rem;animation:fadeIn 1.4s;">Free, open source &amp; safe – community verified</div>
+            <div style="margin-top:10px;animation:fadeIn 1.5s;display:flex;justify-content:center;gap:10px;">
+                <a href="#faq" style="color:#bbb;text-decoration:none;font-size:1.05rem;">FAQ</a>
+                <span style="color:#444;">|</span>
+                <a href="#changelog" style="color:#bbb;text-decoration:none;font-size:1.05rem;">Changelog</a>
+            </div>
+        </div>
+        <div class="section" style="background:rgba(24,24,24,0.92);border-radius:14px;padding:18px 20px 12px 20px;box-shadow:0 2px 12px #00bfff55;animation:fadeInUp 1.7s;backdrop-filter:blur(2px);">
+            <h2 style="color:#00bfff;font-size:1.22rem;margin:0 0 10px 0;animation:fadeIn 1.8s;letter-spacing:1px;">What is PythonBot?</h2>
+            <p style="color:#bfffe0;font-size:1.09rem;margin:0 0 10px 0;animation:fadeIn 2s;line-height:1.7;">
+                PythonBot is an open source triggerbot for GTA 5. It detects colors at the crosshair and fires automatically – for comfort and accessibility. No overlay, no injection. <b>FiveM is supported and recommended by the developer!</b> Not 100% safe, but no hidden functions and no manipulation of the game process.
+            </p>
+            <p style="color:#00bfff;font-size:1.08rem;font-weight:bold;">Developer recommendation: Use with FiveM for best experience!</p>
+        </div>
+        <div class="section" style="background:rgba(35,39,46,0.96);border-radius:14px;padding:14px 20px 10px 20px;box-shadow:0 2px 12px #00bfff55;display:flex;align-items:center;gap:16px;animation:fadeInUp 2s;backdrop-filter:blur(2px);">
+            <img src="safe.png" alt="Security Check" style="width:36px;height:36px;filter:drop-shadow(0 1px 6px #00bfffcc);animation:popIn 2.2s;">
+            <span style="color:#00bfff;font-weight:600;font-size:1.13rem;">Open source & verified – No hidden functions, no risks!</span>
+        </div>
+        <div class="section" style="background:rgba(24,24,24,0.92);border-radius:14px;padding:18px 20px 12px 20px;box-shadow:0 2px 12px #00bfff55;animation:fadeInUp 2.2s;backdrop-filter:blur(2px);">
+            <h2 style="color:#00bfff;font-size:1.13rem;margin:0 0 10px 0;letter-spacing:1px;">Features</h2>
+            <ul style="color:#bfffe0;font-size:1.09rem;line-height:1.8;margin:0 0 10px 0;padding-left:22px;">
+                <li>Detects color at the crosshair and fires automatically</li>
+                <li>Customizable hotkeys for maximum flexibility</li>
+                <li>Modern, clean UI – not a "cheat" look</li>
+                <li>Open source, community feedback welcome</li>
+                <li>No ads, no hidden costs</li>
+                <li>Color trigger: <b>R &gt; 134, G &lt; 94, B &lt; 83</b></li>
+            </ul>
+        </div>
+        <div class="section" style="background:rgba(35,39,46,0.96);border-radius:14px;padding:18px 20px 12px 20px;box-shadow:0 2px 12px #00bfff55;animation:fadeInUp 2.3s;backdrop-filter:blur(2px);">
+            <h2 style="color:#00bfff;font-size:1.13rem;margin:0 0 10px 0;letter-spacing:1px;">Quickstart</h2>
+            <ol style="color:#bfffe0;font-size:1.09rem;line-height:1.8;margin:0 0 10px 0;padding-left:22px;">
+                <li>Download and extract</li>
+                <li>Start PythonBot</li>
+                <li>Choose color and hotkeys</li>
+                <li>Use in-game – comfort & overview!</li>
+                <li><b>Developer recommends FiveM for best compatibility!</b></li>
+            </ol>
+        </div>
+        <div class="section" style="background:rgba(24,24,24,0.92);border-radius:14px;padding:18px 20px 12px 20px;box-shadow:0 2px 12px #00bfff55;animation:fadeInUp 2.45s;backdrop-filter:blur(2px);">
+            <h2 style="color:#00bfff;font-size:1.13rem;margin:0 0 10px 0;letter-spacing:1px;">Verification Code</h2>
+            <p style="color:#bfffe0;font-size:1.09rem;line-height:1.7;">
+                For security, PythonBot requires a verification code from this website.<br>
+                The code changes every <b>30 seconds</b>. Enter the current code in the app.<br>
+                <span style="color:#00bfff;">A progress bar below shows when the next code will appear.</span>
+            </p>
+            <div id="verification-code-box" style="display:flex;align-items:center;gap:18px;margin-top:18px;">
+                <span id="verification-code" style="font-size:2.2rem;font-family:Consolas,monospace;color:#00ff99;background:#181c23;border-radius:8px;padding:8px 22px;box-shadow:0 2px 8px #00bfff44;">----</span>
+                <div style="flex:1;">
+                    <div style="height:12px;width:100%;background:#232837;border-radius:6px;overflow:hidden;box-shadow:0 1px 4px #00bfff33;">
+                        <div id="verification-progress" style="height:100%;width:100%;background:linear-gradient(90deg,#00bfff,#00eaff);transition:width 1s;"></div>
+                    </div>
+                    <div id="verification-timer" style="font-size:1.05rem;color:#bbb;margin-top:2px;text-align:right;">30s</div>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="faq" style="background:rgba(24,24,24,0.92);border-radius:14px;padding:18px 20px 12px 20px;box-shadow:0 2px 12px #00bfff55;animation:fadeInUp 2.4s;backdrop-filter:blur(2px);">
+            <h2 style="color:#00bfff;font-size:1.13rem;margin:0 0 10px 0;letter-spacing:1px;">FAQ</h2>
+            <b style="color:#00bfff;">Is PythonBot safe?</b><br>
+            <span style="color:#bfffe0;">Not 100% safe! Use at your own risk. <b>Nothing is injected into the game</b> and no game files are changed.</span><br><br>
+            <b style="color:#00bfff;">Is this a cheat?</b><br>
+            <span style="color:#bfffe0;">It's a comfort tool (triggerbot), not a classic cheat. No unfair advantages like aimbot, wallhack, etc. No injection, no manipulation of the game process.</span><br><br>
+            <b style="color:#00bfff;">How can I give feedback?</b><br>
+            <span style="color:#bfffe0;">Via GitHub or our Discord server. We welcome community feedback!</span>
+        </div>
+        <div class="section" id="changelog" style="background:#181818;border-radius:10px;padding:14px 18px 10px 18px;box-shadow:0 2px 8px #00bfff55;animation:fadeInUp 2.5s;">
+            <h2 style="color:#00bfff;font-size:1.13rem;margin:0 0 8px 0;letter-spacing:1px;">Changelog v0.6</h2>
+            <ul style="color:#bbb;font-size:1.04rem;line-height:1.7;margin:0 0 8px 0;padding-left:18px;">
+                <li>Panel glow and rounded corners removed, classic panel design</li>
+                <li>Overlay label without border, overlay position updates instantly</li>
+                <li>All version displays and website sync to v0.6</li>
+                <li>All texts and FAQ in English only</li>
+                <li>Color trigger default: R &gt; 134, G &lt; 94, B &lt; 83</li>
+            </ul>
+            <h2 style="color:#00bfff;font-size:1.13rem;margin:18px 0 8px 0;letter-spacing:1px;">Changelog v0.5</h2>
+            <ul style="color:#bbb;font-size:1.04rem;line-height:1.7;margin:0 0 8px 0;padding-left:18px;">
+                <li>Bugfix: Overlay-Position wird beim Wechsel korrekt gesetzt</li>
+                <li>Panel-Container von Canvas/Kreis auf Frame umgestellt</li>
+                <li>Overlay-Label ohne Glow, klassischer Look</li>
+            </ul>
+            <h2 style="color:#00bfff;font-size:1.13rem;margin:18px 0 8px 0;letter-spacing:1px;">Changelog v0.4</h2>
+            <ul style="color:#bbb;font-size:1.04rem;line-height:1.7;margin:0 0 8px 0;padding-left:18px;">
+                <li>Neverlose-Style: Neues dunkles, kontrastreiches Design mit Tabs</li>
+                <li>Overlay-Transparenz einstellbar</li>
+                <li>Hotkeys frei wählbar</li>
+                <li>Theme-Auswahl (hell/dunkel)</li>
+                <li>Schriftgröße und Overlay-Icon wählbar</li>
+                <li>Französisch als Sprache</li>
+                <li>Changelog als Tab</li>
+                <li>Discord-Link entfernt</li>
+            </ul>
+        </div>
+        <div class="footer" style="margin-top:32px;">
+            Triggerbot: Color at crosshair | Hotkeys: F5, CTRL+F4<br>
+            <span style="color:#00bfff;">[PythonBot] Version v0.6</span><br>
+            <span style="font-size:0.93em;color:#bfffe0;">Open source &amp; community – <b>100% Free</b></span><br>
+            <span style="font-size:0.92em;color:#888;">Google License: This project is not affiliated with Google or Rockstar Games. Google is a trademark of Google LLC. For icons, fonts or APIs, see the respective <a href='https://policies.google.com/terms' target='_blank' style='color:#00bfff;'>Google Terms of Service</a> and <a href='https://policies.google.com/privacy' target='_blank' style='color:#00bfff;'>Privacy Policy</a>.</span>
+        </div>
+    </div>
+    <style>
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 #00bfff55; }
+            70% { box-shadow: 0 0 0 12px #00bfff00; }
+            100% { box-shadow: 0 0 0 0 #00bfff55; }
+        }
+        .pulse {
+            animation: pulse 1.6s infinite;
+        }
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.7); }
+            80% { opacity: 1; transform: scale(1.1); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+    <script>
+        // Animationen für Download-Button and Info-Boxen sind per CSS realisiert
+        document.addEventListener('DOMContentLoaded', function() {
+            function smoothScrollTo(targetId) {
+                var el = document.getElementById(targetId);
+                if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+            document.querySelectorAll('a[href^="#faq"], a[href^="#changelog"]').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    var href = this.getAttribute('href');
+                    if (href.startsWith('#')) {
+                        e.preventDefault();
+                        smoothScrollTo(href.substring(1));
+                    }
+                });
+            });
+        });
+        // Verification code generator (like in the app, but only on website)
+        function generateVerificationCode() {
+            // Deterministic code based on time, so app and website can match if needed
+            // Here: random code every 30s, but stays in sync for all users
+            const now = Math.floor(Date.now() / 1000);
+            const interval = 30;
+            const seed = Math.floor(now / interval);
+            // Simple deterministic pseudo-random (so code is same for all users in same interval)
+            function seededRand(s) {
+                let x = Math.sin(s) * 10000;
+                return x - Math.floor(x);
+            }
+            const code = Math.floor(seededRand(seed) * 10000).toString().padStart(4, '0');
+            return code;
+        }
+        function updateVerificationCode() {
+            const interval = 30;
+            const now = Math.floor(Date.now() / 1000);
+            const elapsed = now % interval;
+            const remaining = interval - elapsed;
+            document.getElementById('verification-code').textContent = generateVerificationCode();
+            document.getElementById('verification-timer').textContent = remaining + "s";
+            document.getElementById('verification-progress').style.width = ((remaining / interval) * 100) + "%";
+        }
+        setInterval(updateVerificationCode, 1000);
+        updateVerificationCode();
+    </script>
+</body>
+</html>
